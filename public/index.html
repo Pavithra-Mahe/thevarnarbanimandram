@@ -1,744 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>தேவர் நற்பணி மன்றம்</title>
-    
-    <!-- Favicon (browser tab icon) -->
-    <link rel="icon" type="image/png" href="app_main_icon_compress.jpg" sizes="32x32">
-    <link rel="icon" type="image/png" href="app_main_icon_compress.jpg" sizes="16x16">
-
-    <!-- Apple / iOS App Icon -->
-    <link rel="apple-touch-icon" href="app_main_icon_compress.jpg" sizes="180x180">
-
-    <!-- Android / PWA App Icon -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Open Graph -->
-<meta property="og:title" content="தேவர் நற்பணி மன்றம்">
-<meta property="og:description" content="தேவர் நற்பணி மன்றம், குத்துக்கல்வலசை">
-<meta property="og:image" content="https://narpanimandramapp.web.app/app_main_icon_compress.jpg">
-<meta property="og:url" content="https://narpanimandramapp.web.app/">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="தேவர் நற்பணி மன்றம்">
-<meta name="twitter:description" content="தேவர் நற்பணி மன்றம், குத்துக்கல்வலசை">
-<meta name="twitter:image" content="https://narpanimandramapp.web.app/app_main_icon_compress.jpg">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffdd00 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff4757, #ffa502);
-            animation: float-shapes 20s infinite linear;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            left: 70%;
-            animation-delay: -5s;
-        }
-
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            left: 30%;
-            animation-delay: -10s;
-        }
-
-        .shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            left: 90%;
-            animation-delay: -15s;
-        }
-
-        .shape:nth-child(5) {
-            width: 90px;
-            height: 90px;
-            left: 50%;
-            animation-delay: -7s;
-        }
-
-        @keyframes float-shapes {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffdd00;
-            border-radius: 50%;
-            animation: particles 15s infinite linear;
-        }
-
-        @keyframes particles {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10px) translateX(100px);
-                opacity: 0;
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            text-align: center;
-            padding: 60px 0 40px;
-            color: white;
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #ff4757, #ffa502);
-            border-radius: 25px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            box-shadow: 0 8px 32px rgba(255,71,87,0.4);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .main-content {
-            background: white;
-            margin: 0 20px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            overflow: hidden;
-            animation: slideUp 1s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .download-section {
-            padding: 40px;
-            text-align: center;
-            background: linear-gradient(45deg, #ff4757 0%, #ffa502 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .download-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,60 0,100"/></svg>');
-            animation: wave 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0) scaleY(1); }
-            100% { transform: translateX(-50px) scaleY(1.1); }
-        }
-
-        .download-btn {
-            display: inline-block;
-            background: white;
-            color: #333;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin: 20px 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        .download-btn:hover::before {
-            left: 100%;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-        }
-
-        .download-btn i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        .version-info {
-            margin-top: 20px;
-            opacity: 0.9;
-        }
-
-        .features {
-            padding: 50px 40px;
-        }
-
-        .features h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            color: #333;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            padding: 30px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #ff6348 0%, #ff9500 100%);
-            color: white;
-            text-align: center;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse-glow 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255,99,72,0.3);
-        }
-
-        .feature-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .release-notes {
-            padding: 50px 40px;
-            background: #f8f9fa;
-        }
-
-        .release-notes h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            color: #333;
-        }
-
-        .release-item {
-            background: white;
-            margin-bottom: 20px;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid #ff4757;
-            box-shadow: 0 5px 15px rgba(255,71,87,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .release-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255,71,87,0.05), rgba(255,165,2,0.05));
-            transition: width 0.3s ease;
-        }
-
-        .release-item:hover::before {
-            width: 100%;
-        }
-
-        .release-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 25px rgba(255,71,87,0.2);
-        }
-
-        .release-version {
-            font-weight: bold;
-            color: #ff4757;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .release-date {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-
-        .release-changes {
-            list-style: none;
-        }
-
-        .release-changes li {
-            padding: 5px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .release-changes li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #ffa502;
-            font-weight: bold;
-        }
-
-        .app-info {
-            padding: 50px 40px;
-            text-align: center;
-        }
-
-        .app-info h2 {
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            color: #333;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .info-item {
-            padding: 20px;
-            border-radius: 10px;
-            background: #f8f9fa;
-        }
-
-        .info-item strong {
-            color: #667eea;
-        }
-
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-        }
-
-        .install-guide {
-            background: #e3f2fd;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .install-guide h3 {
-            color: #1976d2;
-            margin-bottom: 15px;
-        }
-
-        .install-steps {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-
-        .install-steps li {
-            counter-increment: step-counter;
-            padding: 10px 0 10px 40px;
-            position: relative;
-        }
-
-        .install-steps li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 8px;
-            background: #1976d2;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2em; }
-            .app-icon { width: 100px; height: 100px; font-size: 40px; }
-            .main-content { margin: 0 10px; }
-            .download-section, .features, .release-notes, .app-info { padding: 30px 20px; }
-            .download-btn { padding: 15px 30px; margin: 10px 5px; }
-            .features h2, .release-notes h2, .app-info h2 { font-size: 2em; }
-        }
-
-        .security-notice {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
-        }
-
-        .security-notice h4 {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-
-        .security-notice p {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>தேவர் நற்பணி மன்றம்</title>
+
+  <link rel="icon" type="image/png" href="app_main_icon_compress.jpg" sizes="32x32">
+  <link rel="apple-touch-icon" href="app_main_icon_compress.jpg" sizes="180x180">
+  <meta property="og:title" content="தேவர் நற்பணி மன்றம்">
+  <meta property="og:description" content="தேவர் நற்பணி மன்றம், குத்துக்கல்வலசை">
+  <meta property="og:image" content="https://narpanimandramapp.web.app/app_main_icon_compress.jpg">
+  <meta property="og:url" content="https://narpanimandramapp.web.app/">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      color: #fff;
+      background: #0a0a0a;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Animated background */
+    .animated-bg, .mesh-gradient, .orbs, .sparkles {
+      position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;
+    }
+    .animated-bg {
+      background: radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(247, 147, 30, 0.3) 0%, transparent 50%);
+      animation: bgPulse 8s ease-in-out infinite;
+    }
+    @keyframes bgPulse {0%,100%{opacity:.6;}50%{opacity:.9;}}
+
+    .mesh-gradient {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), transparent 50%),
+                  linear-gradient(225deg, rgba(247, 147, 30, 0.1), transparent 50%);
+      animation: meshRotate 20s linear infinite;
+    }
+    @keyframes meshRotate {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+
+    /* Floating Orbs */
+    .orb {
+      position:absolute; border-radius:50%; filter:blur(60px); opacity:.4;
+      animation: floatOrb 15s ease-in-out infinite;
+    }
+    .orb:nth-child(1){width:400px;height:400px;top:10%;left:10%;
+      background: radial-gradient(circle, rgba(255,107,53,0.8),transparent);}
+    .orb:nth-child(2){width:300px;height:300px;bottom:20%;right:10%;
+      background: radial-gradient(circle, rgba(247,147,30,0.8),transparent);}
+    .orb:nth-child(3){width:350px;height:350px;top:50%;left:50%;
+      background: radial-gradient(circle, rgba(255,221,0,0.6),transparent);}
+    @keyframes floatOrb {
+      0%,100%{transform:translate(0,0);}
+      50%{transform:translate(30px,-30px);}
+    }
+
+    /* Header */
+    .header {
+      text-align:center;
+      padding:80px 20px 40px;
+      position:relative;
+      z-index:10;
+    }
+    .app-icon {
+      width:130px;height:130px;margin:0 auto 25px;
+      border-radius:30px;overflow:hidden;
+      background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.05));
+      box-shadow:0 20px 60px rgba(255,71,87,.4);
+      animation:iconFloat 4s ease-in-out infinite, iconGlow 2s ease-in-out infinite;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .app-icon img{width:80px;height:80px;border-radius:20px;object-fit:cover;}
+    @keyframes iconFloat {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+    @keyframes iconGlow {
+      0%,100%{box-shadow:0 20px 60px rgba(255,71,87,.4);}
+      50%{box-shadow:0 20px 80px rgba(255,71,87,.6);}
+    }
+    .header h1 {
+      font-size:3em;
+      background:linear-gradient(45deg,#fff,#ffa502,#fff);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      animation:textGlow 3s ease-in-out infinite;
+    }
+    @keyframes textGlow {
+      0%,100%{text-shadow:0 0 20px rgba(255,107,53,.5);}
+      50%{text-shadow:0 0 40px rgba(255,107,53,.8);}
+    }
+    .header p {font-size:1.3em;opacity:.9;}
+
+    /* Main content */
+    .main-content {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin: 20px auto;
+      padding: 40px;
+      animation: fadeIn 1s ease-out;
+      z-index: 10;
+      position: relative;
+      max-width: 400px;
+      text-align: center;
+    }
+    @keyframes fadeIn {from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+
+    /* Download Button */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background:linear-gradient(135deg,#ff6b35,#ffa502);
+      color:#fff;
+      text-decoration:none;
+      padding:18px 50px;
+      border-radius:60px;
+      font-weight:bold;
+      font-size:1.1em;
+      transition:.4s;
+      margin: 0 auto;
+    }
+    .download-btn:hover {transform:scale(1.05);}
+
+    /* Version Info */
+    .version-info {
+      margin-top:25px;
+      line-height:1.8em;
+      font-size:0.95em;
+      opacity:.9;
+    }
+    .version-line, .update-line {
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .update-line {
+      font-style:italic;
+      opacity:.8;
+    }
+
+    /* Desktop Message */
+    .desktop-message {
+      font-size:1.5em;
+      text-align:center;
+      margin-top:30px;
+      color:#ffd700;
+      text-shadow:0 0 20px rgba(255,165,0,0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {0%,100%{opacity:1;}50%{opacity:.5;}}
+
+    @media(max-width:768px){
+      .header h1{font-size:2.3em;}
+    }
+  </style>
 </head>
 <body>
-    <div class="animated-bg">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="particles">
-            <!-- Particles will be generated by JavaScript -->
-        </div>
+  <div class="animated-bg"></div>
+  <div class="mesh-gradient"></div>
+  <div class="orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+  <div class="sparkles"></div>
+
+  <div class="container">
+    <div class="header">
+      <div class="app-icon">
+        <img src="app_main_icon_compress.jpg" alt="App Icon">
+      </div>
+      <h1>தேவர் நற்பணி மன்றம்</h1>
+      <br>
+      <p>குத்துக்கல்வலசை</p>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <div class="app-icon">
-                <img src="app_main_icon_compress.jpg" alt="App Icon" style="width: 80px; height: 80px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); object-fit: cover;">
-            </div>
-            <h1>தேவர் நற்பணி மன்றம்</h1>
-            <p>குத்துக்கல்வலசை</p>
+    <div class="main-content" id="mobileContent">
+      <h2 style="margin-bottom:20px;">Download Latest Version</h2>
+      <a href="#" class="download-btn" id="downloadBtn">
+        <i class="fab fa-android"></i> Download APK
+      </a>
+
+      <div class="version-info">
+        <div class="version-line">
+          <strong>Version 1.1.0</strong> • <span>64.1 MB</span>
         </div>
-
-        <div class="main-content">
-            <div class="download-section">
-                <h2>Download Latest Version</h2>
-                <a href="#" class="download-btn" id="downloadBtn">
-                    <i class="fab fa-android"></i>
-                    Download APK
-                </a>
-                <!-- <a href="#" class="download-btn" style="background: #4285f4; color: white;">
-                    <i class="fab fa-google-play"></i>
-                    Google Play
-                </a> -->
-                
-                <div class="version-info">
-                    <p><strong>Version 2.1.0</strong> • 58.0 MB • Updated Oct 2, 2025, 06:36 PM</p>
-                </div>
-
-                <div class="security-notice">
-                    <h4><i class="fas fa-shield-alt"></i> Installation Instructions</h4>
-                    <p>Since this is a direct APK download, you may need to enable "Install from Unknown Sources" in your Android settings.</p>
-                </div>
-
-                <div class="install-guide" style="color: #000; text-align: left;">
-                    <h3>How to Install</h3>
-                    <ol class="install-steps">
-                        <li>Download the APK file by clicking the download button above</li>
-                        <li>Go to Settings &gt; Security &gt; Unknown Sources and enable it</li>
-                        <li>Open your file manager and navigate to Downloads</li>
-                        <li>Tap the APK file and follow the installation prompts</li>
-                        <li>Launch the app and enjoy!</li>
-                    </ol>
-                </div>
-                </div>
-            </div>
-
-            <!-- <div class="features">
-                <h2>Amazing Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Lightning Fast</h3>
-                        <p>Optimized for speed and performance on all Android devices</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Secure & Private</h3>
-                        <p>Your data is encrypted and never leaves your device</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3>Beautiful Design</h3>
-                        <p>Modern Material Design with intuitive user interface</p>
-                    </div>
-                </div>
-            </div> -->
+        <div class="update-line">
+          Updated on Oct 10, 2025 – 06:00 PM
         </div>
+      </div>
     </div>
 
-    <div class="footer">
-        <div class="container">
-            <p>&copy; 2025 தேவர் நற்பணி மன்றம். All rights reserved.</p>
-            <p>Need help? Contact us at <a href="mailto:support@narpanimandram.com" style="color: #ffa502;">support@myapp.com</a></p>
-        </div>
+    <div id="desktopMessage" class="desktop-message" style="display:none;">
+      இந்த இணையப் பக்கம் மொபைல் உலாவியில் மட்டுமே அணுக முடியும்.<br>
+      (This page is only accessible via mobile browser)
     </div>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  </div>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCXKDZhxu1X51VxupVC_6qi5ViCRJNLjes",
-    authDomain: "narpanimandramapp.firebaseapp.com",
-    projectId: "narpanimandramapp",
-    storageBucket: "narpanimandramapp.firebasestorage.app",
-    messagingSenderId: "72280742105",
-    appId: "1:72280742105:web:e3eaf2a4a2428eb79106c8",
-    measurementId: "G-460NNW3M0M"
-  };
+  <script>
+    // Detect mobile device
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+    if (!isMobile) {
+      document.getElementById('mobileContent').style.display = 'none';
+      document.getElementById('desktopMessage').style.display = 'block';
+    }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-    <script>
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    // Add sparkles
+    const sparklesContainer = document.querySelector('.sparkles');
+    for (let i=0;i<30;i++){
+      const s=document.createElement('div');
+      s.className='sparkle';
+      s.style.position='absolute';
+      s.style.width='3px';s.style.height='3px';
+      s.style.borderRadius='50%';s.style.background='white';
+      s.style.left=Math.random()*100+'%';
+      s.style.top=Math.random()*100+'%';
+      s.style.opacity=Math.random();
+      s.style.animation=`sparkleFloat ${2+Math.random()*2}s ease-in-out infinite ${Math.random()*3}s`;
+      sparklesContainer.appendChild(s);
+    }
 
-        // Generate floating particles
-        function createParticles() {
-            const particlesContainer = document.querySelector('.particles');
-            const numberOfParticles = 20;
-            
-            for (let i = 0; i < numberOfParticles; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
+    // Sparkle animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes sparkleFloat {
+        0%,100%{opacity:0;transform:translateY(0) scale(0);}
+        50%{opacity:1;transform:translateY(-80px) scale(1);}
+      }`;
+    document.head.appendChild(style);
 
-        // Initialize particles
-        createParticles();
-
-        // Add download tracking
-        document.getElementById('downloadBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            // Replace with your actual APK download URL
-            const downloadUrl = 'https://github.com/naamtechapps/thevarnarbanimandram/releases/download/2.0/thevar_narpani_mandram.apk';
-            
-            // You can add analytics tracking here
-            console.log('Download initiated');
-            
-            // Create a temporary link to trigger download
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = 'Narpani_mandram.apk';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.feature-card, .release-item, .info-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Add dynamic background color shifting
-        let hue = 0;
-        setInterval(() => {
-            hue += 0.5;
-            if (hue >= 360) hue = 0;
-            
-            const shapes = document.querySelectorAll('.shape');
-            shapes.forEach((shape, index) => {
-                const shapeHue = (hue + (index * 30)) % 360;
-                shape.style.background = `linear-gradient(45deg, hsl(${shapeHue}, 70%, 60%), hsl(${shapeHue + 30}, 80%, 70%))`;
-            });
-        }, 100);
-    </script>
+    // Download link
+    const btn=document.getElementById('downloadBtn');
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      const link=document.createElement('a');
+      link.href='https://github.com/naamtechapps/thevarnarbanimandram/releases/download/2.0/Thevar_narpani_mandram.apk';
+      link.download='Narpani_mandram.apk';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  </script>
 </body>
 </html>
